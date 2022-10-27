@@ -26,58 +26,55 @@
   <body>
     <h1>PUC CAMPINAS CHATBOT - HOMOLOGAÇÃO</h1>
     <script type="text/javascript">
-    var url_string = window.location.href;
-    var url = new URL(url_string);
-    var notEmail = 'semEmail';
-    var acessChat = url.searchParams.get("acessChat");
+var url_string = window.location.href;
+var url = new URL(url_string);
+var notEmail = 'semEmail';
+var acessChat = url.searchParams.get("acessChat");
+if (acessChat !== null) {
+    localStorage.setItem('chatbot-info-student', acessChat.replaceAll('@', '7a5r9o3b2a0').replaceAll('.', '5p6o3n6t2o'));
+} else if (acessChat === null) {
+    localStorage.setItem('chatbot-info-student', notEmail);
+}
 
-    if(acessChat !== null){
-		localStorage.setItem('chatbot-info-student', acessChat.replaceAll('@', '7a5r9o3b2a0').replaceAll('.', '5p6o3n6t2o'));
-    }else if(acessChat === null){
-	    localStorage.setItem('chatbot-info-student', notEmail);
-    }
-	
-	
+
 function getCookie(name) {
     var cookieArr = document.cookie.split(";");
-    for(var i = 0; i < cookieArr.length; i++) {
+    for (var i = 0; i < cookieArr.length; i++) {
         var cookiePair = cookieArr[i].split("=");
-            if(name == cookiePair[0].trim()) {
-                return decodeURIComponent(cookiePair[1]);
-            }
+        if (name == cookiePair[0].trim()) {
+            return decodeURIComponent(cookiePair[1]);
+        }
     }
-    return 'semCookie';	    	    
+    return 'semCookie';
 }
-	
-    
-    var urlToken;
-    var paramChat;
-    var paramChatConcat;
-    var replaceEmail;
-    let cookies = document.cookie;
-    let cookieArray = cookies.split(';');
-	
-    urlToken = getCookie('PORTAL_INTEGRACAO');
-    paramChat = localStorage.getItem('chatbot-info-student');
-    paramChatConcat = paramChat + '246split534' + urlToken;
-    let cronchatToken = '2040370550:AAENj2Q3BDtaJXElGp5qACeN8en4jvyuIAA';
-    let hostURL = 'https://cronchatpucampinas.cronapp.io/get-chat?token=';
-    let chatbotURL = `${hostURL}${cronchatToken}&extraparam=${paramChatConcat}`;
-    let scriptHTML = document.createElement("script");
-    scriptHTML.src = chatbotURL;
-    scriptHTML.type = 'text/javascript'
-    document.body.appendChild(scriptHTML);
-	
-    window.onload = function () {
+
+
+var urlToken;
+var paramChat;
+var paramChatConcat;
+var replaceEmail;
+let cookies = document.cookie;
+let cookieArray = cookies.split(';');
+urlToken = getCookie('PORTAL_INTEGRACAO');
+paramChat = localStorage.getItem('chatbot-info-student');
+paramChatConcat = paramChat + '246split534' + urlToken;
+let cronchatToken = '2040370550:AAENj2Q3BDtaJXElGp5qACeN8en4jvyuIAA';
+let hostURL = 'https://cronchatpucampinas.cronapp.io/get-chat?token=';
+let chatbotURL = `${hostURL}${cronchatToken}&extraparam=${paramChatConcat}`;
+let scriptHTML = document.createElement("script");
+scriptHTML.src = chatbotURL;
+scriptHTML.type = 'text/javascript'
+document.body.appendChild(scriptHTML);
+window.onload = function () {
     if (acessChat != null) {
-        setTimeout(function(){
+        setTimeout(function () {
             clickBtnChat()
-          }, 1000);
-       }
+        }, 1000);
     }
-	function clickBtnChat(){
-    	var btnConversationId = 'chatBtn_' + localStorage.getItem('conversationidbot');
-    	document.getElementById(btnConversationId).click();
+}
+function clickBtnChat() {
+    var btnConversationId = 'chatBtn_' + localStorage.getItem('conversationidbot');
+    document.getElementById(btnConversationId).click();
 }
 </script>
   </body>
